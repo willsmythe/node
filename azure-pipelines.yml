@@ -1,0 +1,19 @@
+pool:
+  vmImage: 'vs2017-win2016'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(PYTHON_VERSION)'
+    architecture: 'x64'
+
+- task: CondaEnvironment@1
+  inputs:
+    packageSpecs: 'nasm'
+    installOptions: "-c conda-forge"
+    updateConda: false
+  displayName: Install nasm
+
+- script: |
+    vcbuild.bat nosign no-cctest release x64
+  displayName: 'Install prerequisites'
