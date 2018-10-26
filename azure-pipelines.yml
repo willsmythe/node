@@ -9,6 +9,12 @@ steps:
 #    updateConda: false
 #  displayName: Install nasm
 
+- powershell: |
+    Get-PSDrive
+    $env:temp
+    dir $env:temp
+  displayName: 'Show free space and temp'
+    
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '2.7'
@@ -17,3 +23,10 @@ steps:
 - script: |
     vcbuild.bat nosign no-cctest release x64 openssl-no-asm
   displayName: 'Build Node'
+
+- powershell: |
+    Get-PSDrive
+    $env:temp
+    dir $env:temp
+  displayName: 'Show free space and temp (post)'
+  condition: always()
