@@ -30,3 +30,9 @@ steps:
     dir $env:temp
   displayName: 'Show free space and temp (post)'
   condition: always()
+  
+- script: |
+    dir $(Build.SourcesDirectory)
+    dir $(Build.SourcesDirectory)\Release
+  condition: always()
+ 
