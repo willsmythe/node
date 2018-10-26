@@ -1,21 +1,12 @@
-pool:
-  vmImage: 'vs2017-win2016'
-
-timeoutInMinutes: 240
-
-steps:
-#- task: CondaEnvironment@1
-#  inputs:
-#    packageSpecs: 'nasm'
-#    installOptions: "-c conda-forge"
-#    updateConda: false
-#  displayName: Install nasm
-
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '2.7'
-    architecture: 'x64'
-
-- script: |
-    vcbuild.bat nosign no-cctest release x64 openssl-no-asm
-  displayName: 'Build Node'
+jobs:
+- job: Build
+  timeoutInMinutes: 240
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '2.7'
+      architecture: 'x64'
+  - script: vcbuild.bat nosign no-cctest release x64 openssl-no-asm
+    displayName: 'Build Node'
