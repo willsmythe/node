@@ -4,7 +4,7 @@ pool:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '$(PYTHON_VERSION)'
+    versionSpec: '2.7'
     architecture: 'x64'
 
 - task: CondaEnvironment@1
