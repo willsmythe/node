@@ -1,6 +1,8 @@
 pool:
   vmImage: 'vs2017-win2016'
 
+timeoutInMinutes: 240
+
 steps:
 #- task: CondaEnvironment@1
 #  inputs:
